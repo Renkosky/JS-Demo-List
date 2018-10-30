@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul id="list">
+    <li>item 1</li>
+    <li>item 2</li>
+    <li>item 3</li>
+    <li>item n</li>
+  </ul>
+  <script>
+    // 给父层元素绑定事件
+    document.getElementById('list').addEventListener('click', function (e) {
+      // 兼容性处理
+      var event = e || window.event;
+      var target = event.target || event.srcElement;
+      // 判断是否匹配目标元素
+      if (target.nodeName.toLocaleLowerCase() === 'li') {
+        console.log('the content is: ', target.innerHTML);
+      }
+    });
+//在上述代码中， target 元素则是在 #list 元素之下具体被点击的元素，然后通过判断 target 的一些属性（比如：nodeName，id 等等）可以更精确地匹配到某一类 #list li 元素之上；
+  </script>
+</body>
+
+</html>

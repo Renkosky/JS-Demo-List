@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+    .doll{
+        position: absolute;
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+        background-color: red;
+    }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+<div class="doll"></div>
+<script>
+ var doll = document.getElementsByClassName('doll')[0];
+
+ doll.onmousedown = function name(ev) {
+ 　 document.onmousemove = function (ev) {  
+      doll.style.top = ev.clientY + 'px';
+      doll.style.left = ev.clientX + 'px';
+   }
+   document.onmouseup = function(ev){
+　　　document.onmousemove = null;
+　　　document.onmouseup = null;
+　 };
+ }
+</script>
+</body>
+</html>

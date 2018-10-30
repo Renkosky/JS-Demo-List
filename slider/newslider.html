@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    .slide {
+      width: 300px;
+      margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+    }
+
+    #content {
+      width: 1550px;
+      transition: transform 1s;
+      font-size: 0
+    }
+
+    img {
+      width: 300px;
+      height: 300px;
+    }
+
+    .leftBar {
+      position: absolute;
+      top: 35px;
+    }
+
+    .leftBar:before {
+      content: '\23EA';
+      display: block;
+      font-size: 30px;
+    }
+
+    .rightBar:after {
+      content: '\23E9';
+      display: block;
+      font-size: 30px;
+    }
+
+    .rightBar {
+      position: absolute;
+      top: 35px;
+      right: 0px;
+    }
+  </style>
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="slide">
+    <div id="content">
+      <img src="./1.jpg" class="image1" />
+      <img src="./2.jpg" />
+      <img src="./3.jpg" />
+      <img src="./4.jpg" />
+      <img src="./5.jpg" />
+    </div>
+    <div id="barWrap">
+      <div class="leftBar" id="leftBar"></div>
+      <div class="rightBar" id="rightBar"></div>
+    </div>
+  </div>
+  <script>
+    var leftDistance = 0
+    var totalDistance = 1500
+    var content = document.getElementById('content')
+    var barWrap = document.getElementById('barWrap')
+    var num = content.children.length
+    var width = document.getElementsByTagName('img')[0].width
+    var timer = null
+
+    barWrap.addEventListener('click', function (e) {
+      window.clearInterval(timer)
+      if (e.target.id === 'leftBar') {
+        leftDistance = (leftDistance == 0) ? width * (num - 1) : leftDistance - 300
+      }
+      else if (e.target.id === 'rightBar') {
+        leftDistance = (leftDistance == (num - 1) * 300) ? 0 : leftDistance + 300
+      }
+      content.style.transform = 'translate(-' + leftDistance + 'px)'
+      // timer = setInterval(test, 3000)
+    })
+
+    var test = function () {
+      if (leftDistance < totalDistance) {
+        leftDistance += 300
+      } else {
+        leftDistance = 0
+      }
+      content.style.transform = 'translate(-' + leftDistance + 'px)'
+    }
+    // timer = setInterval(test, 3000)
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">       
+    </head>
+    <body>
+    <script>
+    //every对每一项运行函数,函数接受三个参数（item,index,array），全为true则返回true
+    var numbers = [1,2,3,4,5,6];
+    var everyresult = numbers.every(function (value,index,array) {
+        return value>3;
+    })
+     //some对每一项运行函数,函数接受三个参数（item,index,array），有一个为true则返回true
+    var someresult = numbers.some(function (value,index,array) {
+        return value>5;
+    })
+    //fitler对每一项运行函数,函数接受三个参数（item,index,array），返回true的项目组成的数组
+    var filterresult = numbers.filter(function (value, index, array) {
+        return value>3;
+    })
+    //map对每一项运行函数,函数接受三个参数（item,index,array），返回每一项执行函数后生成的数组
+    var mapresult = numbers.map(function (value, index, array) {
+        return value*2;
+    })
+    //foreach 不返回，只是执行一些操作
+    //归并方法
+
+    //reduce()接受四个参数，前一个值，当前值，项的索引和数组对象，
+    //函数的返回值都会作为第一个参数自动传递给下一项
+    var reduceresult = numbers.reduce(function (prev,cur,index,array) {
+        return prev+cur;
+    })
+    console.log(everyresult);
+    console.log(someresult);
+    console.log(filterresult);
+    console.log(mapresult);
+    console.log(reduceresult)
+
+
+    //
+    </script>
+    </body>
+</html>
+

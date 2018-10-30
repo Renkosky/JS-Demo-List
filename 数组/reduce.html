@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  var a = {
+    0: {
+      all: 2,
+      createdAt: "2018-07-09T16:09:40.260Z",
+      date: "2018-07-10 00:09",
+      fatal
+        :
+        0,
+      fixed
+        :
+        0,
+      high
+        :
+        0,
+      low
+        :
+        0,
+      middle
+        :
+        2,
+      new
+        :
+        2,
+      scanType
+        :
+        "NmapVul",
+      taskId
+        :
+        "dc0a36e1-446f-48af-98ec-5938bfa713c4",
+    }
+  }
+  var b = ['fatal', 'high', 'middle', 'low']
+  const result = a[0]['fatal'] + a[0]['high']
+  var c = b.reduce((total, current, index) => {
+    if (index > 1) {
+      return total + a[0][current]
+    }
+    return a[0][total] + a[0][current]
+
+
+  })
+</script>
+
+</html>

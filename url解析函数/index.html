@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+  <script>
+    parseurl('https://www.nowcoder.com/practice/a3ded747e3884a3c86d09d88d1652e10?tpId=2&tqId=10852&tPage=1&rp=1&ru=/ta/front-end&qru=/ta/front-end/question-ranking')
+    function parseurl(url) {
+      var a = document.createElement('a')
+      a.href = url
+      let reg = /[?&](\w+)=(\w)/g
+      let regRes
+      var result = []
+      while (regRes = reg.exec(url)) {
+        result.push(regRes[2])
+      }
+      console.log({
+        protocol: a.protocol,
+        host: a.hostname,
+        port: a.port,
+        query: a.search,
+        parmas: result
+      });
+
+      return {
+        protocol: a.protocol,
+        host: a.hostname,
+        port: a.port,
+        query: a.search,
+        parmas: result
+      }
+    }
+
+  </script>
+</body>
+
+</html>

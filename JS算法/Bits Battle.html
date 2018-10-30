@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+    var c=[5, 3, 14];
+    bitsBattle(c);
+    function bitsBattle(numbers) {
+var odd=[];
+var odd2=[];
+var even=[];
+var even2=[];
+var a=0,b=0;
+for(var i = 0;i<numbers.length;i++){
+  if(numbers[i]%2==0)
+  {
+    even.push(numbers[i]);
+  }else{
+    odd.push(numbers[i]);
+  }
+}
+for (var j = 0;j<even.length;j++){
+  even2.push(even[j].toString(2))
+}
+for (var k = 0; k < odd.length; k++) {
+  odd2.push(odd[k].toString(2));
+}
+even2=even2.join("").split("")
+odd2=odd2.join("").split("")
+for (var l = 0; l < even2.length; l++) {
+  if(even2[l]==0)
+    a++;
+}
+
+for (var m = 0; m < odd2.length; m++){
+  if(odd2[m]==1){
+    b++;
+  }
+}
+if (a>b) {
+   return "evens win the battle with "+a+"-"+b
+ }else if(a==b){
+   return "tie"
+ } else{
+   return ("odds win the battle with "+b+"-"+a)
+ }
+}
+ //idot
+ //toString(2).split(1).length-1!
+    </script>
+  </body>
+</html>

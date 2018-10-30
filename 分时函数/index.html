@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /**
+     * 一个例子是创建 WebQQ 的 QQ 好友列表。列表中通常会有成百上千个好友，如果一个好友
+     * 用一个节点来表示，当我们在页面中渲染这个列表的时候，可能要一次性往页面中创建成百上千
+     * 个节点。
+     *
+    */
+    //分时函数可以让创建节点的工作分批次进行
+    //ary:创造节点所用到的函数，fn:封装了创建节点逻辑的函数，count:每一批节点的数量
+    var timeChunk = function (ary, fn, count) {
+      var obj,
+        t;
+      var len = ary.length
+      var start = function () {
+        for (let i = 0; i < Math.min(count || 1, ary.length); i++) {
+          var obj = ary.shift()
+          fn(obj)
+        }
+      }
+
+      return function () {
+        t = setInterval(function () {
+          if (ary.length === 0) {
+            clearInterval(t)
+          }
+          start()
+        }, 200)
+      }
+    }
+
+    var ary = [];
+    for (var i = 1; i <= 1000; i++) {
+      ary.push(i);
+    };
+    var renderFriendList = timeChunk(ary, function (n) {
+      var div = document.createElement('div');
+      div.innerHTML = n;
+      document.body.appendChild(div);
+    }, 8);
+    renderFriendList();
+
+  </script>
+</body>
+
+</html>

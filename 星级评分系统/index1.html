@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .rating{
+      display: flex;
+    }
+    .star{
+      flex: 0 1 auto;
+      width: 32px;
+      height: 30px;
+      margin-left: 10px;
+      background-image: url('iVPGGC.png');
+      cursor: pointer;
+    }
+    </style>
+</head>
+<body>
+  <div class="rating">
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+  </div>
+    <script>
+      var star = document.getElementsByClassName('star');
+      var rating =  document.getElementsByClassName('rating')[0];  
+      num = 0;
+      function light(num) {
+        for (var i = 0; i < star.length; i++) {
+          if (i < num) {
+            star[i].style.backgroundPosition = "-68px";
+          } else {
+            star[i].style.backgroundPosition = "";
+          }       
+        }
+      }
+     
+      for (let j = 0; j < star.length; j++) {
+        star[j].onmouseover = function () {    
+          light(j+1);      
+        }
+        star[j].onclick = function () {
+          num = j+1;    
+          light(j+1);
+        }
+      }
+      rating.onmouseout = function () {
+        light(num);
+      }
+   
+    </script>
+</body>
+</html>

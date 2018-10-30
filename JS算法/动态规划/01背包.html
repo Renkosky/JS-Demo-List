@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <script>
+
+
+    // for (var i = 0; i < nums; i++) {
+    //   v[i] = new Array();
+    //   for (var j = 0; j < capacity; j++) {
+    //     v[i][j] = 0
+    //   }
+    // }
+    function packageMaxValue(weight, value, capacity) {
+      let v = []
+      for (let i = 0; i <= nums; i++) {
+        v[i] = new Array()
+        for (let j = 0; j <= capacity; j++) {
+          if (i == 0 || j == 0) v[i][j] = 0
+          else if (j < weight[i - 1]) {
+            v[i][j] = v[i - 1][j]
+          }
+          else {
+            v[i][j] = Math.max(v[i - 1][j], (v[i - 1][j - weight[i - 1]] + value[i - 1]))
+          }
+        }
+
+      }
+      return v
+    }
+    function traceback(value, c, w) {
+      let x = []
+      for (let i = nums; i > 0; i--) {
+        if (value[i][c] == value[i - 1][c])
+          x[i] = 0;
+        else {
+          x[i] = 1;
+          c -= w[i - 1];
+        }
+      }
+      x[1] = (value[1][c] > 0) ? 1 : 0;
+      return x
+    }
+
+    var capacity = 8
+    var nums = 4
+    var value = [3, 4, 5, 6]
+    var weight = [2, 3, 4, 5]
+    let valdap = packageMaxValue(weight, value, capacity)
+    console.log(traceback(valdap, capacity, weight));
+  </script>
+</body>
+
+</html>

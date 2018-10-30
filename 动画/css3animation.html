@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    .fadeIn {
+      animation: fadeIn 1.2s both infinite;
+      /* animation-fill-mode 属性规定动画在播放之前或之后，其动画效果是否可见。 */
+      width: 200px;
+      height: 200px;
+      background-color: bisque
+      
+    }
+
+    .stop {
+      animation-play-state: paused;
+      /* //可以暂停css动画 */
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="fadeIn">
+
+  </div>
+  <input type="button" value="暂停" id="btn" />
+  <script>
+    var btn = document.getElementById('btn')
+    var div = document.getElementsByClassName('fadeIn')[0]
+    btn.onclick = function (e) {
+      div.classList.toggle('stop')
+    }
+  </script>
+</body>
+
+</html>

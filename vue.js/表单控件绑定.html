@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="vue.js"></script>
+    <title></title>
+  </head>
+  <body>
+    <div id="ex">
+    <input v-model="message" placeholder="edit me">
+  <p >Message is: {{ message }}</p>
+    </div>
+    <div id="ex2">
+      <input type="checkbox" id="checkbox" v-model="checked">
+      <label for="checkbox">{{ checked }}</label>
+    </div>
+    <div id="ex3">
+        <input type="checkbox" id="checkbox" v-model="checkedName" value="Tom"/>
+         <label for="Tom">Tom</label>
+        <input type="checkbox" id="checkbox" v-model="checkedName" value="Tom1"/>
+          <label for="Tom1">Tom1</label>
+        <input type="checkbox" id="checkbox" v-model="checkedName" value="Tom2"/>
+          <label for="Tom2">Tom2</label>
+          <p>{{checkedName}}</p>
+    </div>
+    <div id="ex4">
+      <select class="" name="" v-model="selected">
+      <option value="A">A</option>
+      <option value="B">B</option>
+      <option>C</option>
+      </select>
+      <span>{{selected}}</span>
+    </div>
+  <script type="text/javascript">
+    var w=new Vue({
+      el:'#ex',
+      data:{
+        message:"123"
+      }
+    })
+    var N=new Vue({
+      el:'#ex2',
+      data:{
+        checked:""
+      }
+    })
+    var e=new Vue({
+      el:"#ex3",
+      data:{
+        checkedName:[]
+      }
+    })
+    var q=new Vue({
+      el:"#ex4",
+      data:{
+        selected:''
+      }
+    })
+
+  </script>
+  </body>
+</html>

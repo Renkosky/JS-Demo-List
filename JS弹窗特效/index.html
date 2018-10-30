@@ -1,0 +1,214 @@
+<!--文档声明为 html（最新html5）-->
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面编码格式为国际编码（utf-8）还有一种中文编码（gbk/gb2312）-->
+		<meta charset="UTF-8">
+		<!--网页三要素-->
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="Description" content="描述">
+		<title>网页的标题</title>
+		<style>
+		*{margin:0;padding:0;}
+		.btn{
+			width:50px;
+			height:35px;
+			background:rgba(0,0,0,0.5);
+			position:fixed;
+			right:50px;
+			top:10px;
+			color:#fff;
+			font-size:12px;
+			font-family:'微软雅黑';
+			line-height:35px;
+			text-align:center;
+			border-radius:5px;
+			cursor:pointer;
+		}
+		.mask{
+			width:100%;
+			height:100%;
+			background:rgba(0,0,0,0.5);
+			position:fixed;
+			top:0;
+			left:0;
+			display:none;
+		}
+		.login{
+			width:600px;
+			height:350px;
+			background:#fff;
+			position:fixed;
+			left:150px;
+			top:50px;
+			display:none;
+		}
+		.login .title{
+			width:600px;
+			height:45px;
+			background:#ff9933;
+			line-height:45px;
+			color:#fff;
+			text-indent:20px;
+			font-weight:bold;
+			font-size:20px;
+		}
+		.login .title .colse{
+			float:right;
+			width:17px;
+			height:17px;
+			background:url('images/close.png');
+			margin-top:10px;
+			margin-right:10px;
+		}
+		.login .text{
+			padding:20px;
+			line-height:20px;
+		}
+		.login .lg{
+			width:315px;
+			height:200px;
+			margin:0 auto;
+		}
+		.login .lg p{
+			margin-bottom:20px;
+			line-height:35px;
+		}
+		.login .lg p input{
+			width:260px;
+			height:35px;
+			float:right;
+			border:1px solid #ccc;
+		}
+		.login .lg p input.sub{
+			background:url('images/but_bg1.jpg');
+			border:none;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="btn">登陆</div>
+		<div class="mask"></div>
+		<div class="login">
+			<div class="title">用户登陆<span class="colse"></span></div>
+			<p class="text"><img src="images/new.png" width="40" height="40" align="absmiddle"/>一年三百六十五天，还有百来天就过春节啦！时间过得好快啊，又老了一岁！还记得去年春节自己定下的目标，犹如在昨日，历历在目，是时候努力啦。特别通知：今天零基础新班第一节课，同学们不要错过哦！</p>
+			<div class="lg">
+				<form>
+					<p>账号：<input type="text" /></p>
+					<p>密码：<input type="password" /></p>
+					<p><input class="sub" type="submit" value=""/></p>
+				</form>
+			</div>
+		</div>
+		<script src="js/jquery.js"></script>
+		<script>
+		//document.getElementById();
+		//document.getElementsByClassName();
+		//document.getElementsByTagName();
+		/*var Btn = document.getElementsByClassName('btn')[0];//登陆按钮
+		var Mask = document.getElementsByClassName('mask')[0];//遮罩层
+		var Login = document.getElementsByClassName('login')[0];//登陆框
+		var Close = document.getElementsByClassName('colse')[0];
+		var Title = document.getElementsByClassName('title')[0];
+		//点击登陆显示登陆框
+		Btn.onclick = function(){
+			Mask.style.display = 'block';
+			Login.style.display = 'block';
+			center();
+		};
+		//登陆框居中
+		function center(){
+			//获取到浏览器窗口的宽度或者高度
+			//console.log( window.innerWidth );
+			var _left = (window.innerWidth-600)/2;
+			var _top = (window.innerHeight-350)/2;
+			Login.style.left = _left+"px";
+			Login.style.top  = _top+'px';
+		};
+		//当动态改变浏览器窗口大小的时候也要居中
+		window.onresize = function(){
+			center();
+		};
+		//关闭登陆框
+		Close.onclick = function(){
+			Mask.style.display = 'none';
+			Login.style.display = 'none';
+		};
+		init(Title);
+		function init(moveDom){
+			//拖拽登陆框
+			var l = 0,t = 0,x=0,y=0;
+			var isover = true;
+			var parentDom = moveDom.parentNode;
+			moveDom.onmousedown = function(event){
+				//改变的是什么  鼠标位置，登陆框的left top改变
+
+				//left、top改变值 =？鼠标改变值
+				//现在的left/top   = 移动过程中的鼠标值 - 鼠标按下的值 +开始left/top
+				var e = event||window.event;//解决兼容IE和火狐
+				x = e.clientX;
+				y = e.clientY;
+				l = parentDom.offsetLeft;
+				t = parentDom.offsetTop;
+				isover = true;
+				//console.log(x+','+y+','+l+','+t)
+				document.onmousemove= function(event){
+					if(isover){
+						var e = event||window.event;//解决兼容IE和火狐
+						var nowLeft = e.clientX - x + l;
+						var nowTop = e.clientY -y + t;
+						Login.style.left = nowLeft+"px";
+						Login.style.top  = nowTop+'px';
+					}
+					
+				};
+				document.onmouseup = function(){
+					isover = false;
+				}
+			}
+		}*/
+		$('.btn').click(function(){
+			$('.mask').show();
+			$('.login').show();
+			center();
+		});
+		function center(){
+			var _left = ( $(window).width()-600)/2;
+			var _top = ( $(window).height()-350)/2;
+			$('.login').css({left:_left+"px",top:_top+'px'});
+		}
+		$('.colse').click(function(){
+			$('.mask').hide();
+			$('.login').hide();
+		});
+		//拖拽登陆框
+		var l = 0,t = 0,x=0,y=0;
+		var isover = true;
+		$('.title').mousedown(function(event){
+			//改变的是什么  鼠标位置，登陆框的left top改变
+
+			//left、top改变值 =？鼠标改变值
+			//现在的left/top   = 移动过程中的鼠标值 - 鼠标按下的值 +开始left/top
+			var e = event||window.event;//解决兼容IE和火狐
+			x = e.clientX;
+			y = e.clientY;
+			l = $('.login').offset().left;
+			t = $('.login').offset().top;
+			isover = true;
+			//console.log(x+','+y+','+l+','+t)
+			$(document).mousemove(function(event){
+				if(isover){
+					var e = event||window.event;//解决兼容IE和火狐
+					var nowLeft = e.clientX - x + l;
+					var nowTop = e.clientY -y + t;
+					$('.login').css({left:nowLeft+"px",top:nowTop+'px'});
+				}
+				
+			});
+			$(document).mouseup(function(){
+				isover = false;
+			})
+		})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function unique(arr) {
+      var temp = [];
+      for (let i = 0; i < arr.length; i++) {
+        if (temp.indexOf(arr[i]) == -1) {
+          temp.push(arr[i])
+        }
+      }
+      return temp;
+    }
+    a = [1, 1, 2, 2, 5, 5, 4, 4, 6, 6]
+    var b = unique(a);
+    var c = Array.from(new Set(a))
+    console.log(c);
+
+    console.log(b);
+  </script>
+</body>
+
+</html>

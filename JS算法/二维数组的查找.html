@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var arr = [[1, 2, 4, 6], [2, 4, 7, 8], [8, 9, 10, 11], [9, 12, 13, 15]]
+    function Find(target, array) {
+      var rowlen = arr.length;
+      var collen = arr[0].length;
+      var has = 0
+      array.map(item => {
+        if (item.includes(target)) {
+          has++
+        }
+      })
+      if (has) {
+        console.log(true);
+
+        return true
+      } else {
+        return false
+      }
+    }
+    Find(2, arr)
+  </script>
+</body>
+
+</html>

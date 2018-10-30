@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Bind</title>
+</head>
+
+<body>
+  <script>
+    //bind 可以改变this指向，返回一个函数
+    Function.prototype.bind = function (context) {
+      var self = this //保存原函数
+      return function () {
+        //执行新函数时会把之前传入的context当作新函数体内的this
+        return self.apply(context, arguments)
+      }
+    }
+
+    var obj = {
+      name: 'sven'
+    }
+
+    var func = function () {
+      console.log(this.name);
+    }.bind(obj)
+
+    func()
+    /*我们通过 Function.prototype.bind 来“包装” func 函数，并且传入一个对象 context 当作参
+    数，这个 context 对象就是我们想修正的 this 对象。
+    在 Function.prototype.bind 的内部实现中，我们先把 func 函数的引用保存起来，然后返回一
+    个新的函数。当我们在将来执行 func 函数时，实际上先执行的是这个刚刚返回的新函数。在新
+    函数内部， self.apply( context, arguments )这句代码才是执行原来的 func 函数，并且指定 context
+    对象为 func 函数体内的 this。*/
+    Function.prototype.bind2 = function (context) {
+
+      var self = this;
+      // 获取bind2函数从第二个参数到最后一个参数
+      var args = Array.prototype.slice.call(arguments, 1);
+
+      return function () {
+        // 这个时候的arguments是指bind返回的函数传入的参数
+        var bindArgs = Array.prototype.slice.call(arguments);
+        return self.apply(context, args.concat(bindArgs));
+      }
+
+    }
+    //强化班
+    Function.prototype.bind = function () {
+      var self = this, // 保存原函数
+        context = [].shift.call(arguments), // 需要绑定的 this 上下文
+        args = [].slice.call(arguments); // 剩余的参数转成数组
+      return function () { // 返回一个新的函数
+        return self.apply(context, [].concat.call(args, [].slice.call(arguments)));
+        // 执行新的函数的时候，会把之前传入的 context 当作新函数体内的 this
+        // 并且组合两次分别传入的参数，作为新函数的参数
+      }
+    };
+    var obj = {
+      name: 'sven'
+    };
+    // 第三版解决构造函数this丢失
+    Function.prototype.bind2 = function (context) {
+      var self = this;
+      var args = Array.prototype.slice.call(arguments, 1);
+
+      var fBound = function () {
+        var bindArgs = Array.prototype.slice.call(arguments);
+        // 当作为构造函数时，this 指向实例，此时结果为 true，将绑定函数的 this 指向该实例，可以让实例获得来自绑定函数的值
+        // 以上面的是 demo 为例，如果改成 `this instanceof fBound ? null : context`，实例只是一个空对象，将 null 改成 this ，实例会具有 habit 属性
+        // 当作为普通函数时，this 指向 window，此时结果为 false，将绑定函数的 this 指向 context
+        return self.apply(this instanceof fBound ? this : context, args.concat(bindArgs));
+      }
+      // 修改返回函数的 prototype 为绑定函数的 prototype，实例就可以继承绑定函数的原型中的值
+      fBound.prototype = this.prototype;
+      return fBound;
+    }
+    var func = function (a, b, c, d) {
+      alert(this.name); // 输出： sven
+      alert([a, b, c, d]) // 输出： [ 1, 2, 3, 4 ]
+    }.bind(obj, 1, 2);
+    func(3, 4);
+  </script>
+</body>
+
+</html>

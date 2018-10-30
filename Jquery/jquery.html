@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class="a">
+      nihao~~~
+    </div>
+    <div class="">
+
+    </div>
+    <button type="button" name="bt1">change</button>
+  </body>
+  <script src="jquery-3.1.0.min.js" charset="utf-8"></script>
+  <script type="text/javascript">
+  jQuery(function () {
+    $('button').click(function(){
+      $('div.a').toggle('slow');
+    })
+  })
+
+
+    var bodyscripts = $("script", document.body);
+    console.log(bodyscripts.selector);
+    console.log(bodyscripts.context);
+    console.log(bodyscripts.jquery);
+  </script>
+</html>

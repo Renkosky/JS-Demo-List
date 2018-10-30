@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .a {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      background-color: beige;
+      margin: 50px 200px
+    }
+
+    .b {
+      position: absolute;
+      width: 150px;
+      height: 100px;
+      background-color: greenyellow;
+      margin: 20%
+    }
+
+    .c {
+      width: 200px;
+      height: 200px;
+      background-color: coral;
+      overflow: auto
+    }
+
+    .d {
+      width: 100px;
+      height: 500px;
+      background-color: aquamarine
+    }
+
+    .bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5)
+    }
+  </style>
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="bg">
+
+  </div>
+  <div class='a'>
+    <div class="b"></div>
+  </div>
+  <div class="c">
+    <div class="d">
+    </div>
+
+  </div>
+  <script>
+    //window.innerWidth 和 window.innerHeight 是获取浏览器视口的宽高，包含滚动条。
+    //document.documentElement.clientWidth 和 document.documentElement.clientHeight 是获取浏览器视口的宽高，但不包含滚动条。
+    //offsetTop/left:相对与父元素element.offsetParent的高度/左边距离
+    var aoffsetTop = document.getElementsByClassName('a')[0].offsetTop//200
+    var aoffsetleft = document.getElementsByClassName('a')[0].offsetLeft
+    //offsetheight 元素高度
+
+    //clientHeight/clientwidth,内容去加内边距，不包括滚动条
+    var clientHeight = document.getElementsByClassName('b')[0].clientHeight//100
+    var clientWidth = document.getElementsByClassName('b')[0].clientWidth // 150
+    //scrollHeight/scrollWidth 文档没有滚动条的高宽度
+    //scrollLeft/Top 被滚动条阻挡住的宽高,被卷去的宽高
+
+    //递归获取页面元素位置
+    function getElementLeft(element) {
+      var actualLeft = element.offsetLeft;
+      var current = element.offsetParent;
+
+      while (current !== null) {
+        actualLeft += current.offsetLeft;
+        current = current.offsetParent;
+      }
+
+      return actualLeft;
+    }
+  </script>
+</body>
+
+</html>

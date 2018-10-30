@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>debounce</title>
+  <style>
+    #container {
+      width: 100%;
+      height: 200px;
+      line-height: 200px;
+      text-align: center;
+      color: #fff;
+      background-color: #444;
+      font-size: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container"></div>
+  <script>
+    var count = 1;
+    var container = document.getElementById('container');
+
+    function getUserAction() {
+      container.innerHTML = count++;
+    };
+
+    container.onmousemove = debounce(getUserAction, 1000, true)
+    /**
+     * 防抖函数，在事件触发 n 秒后才执行，如果你在一个事件触发的 n 秒内又触发了这个事件，那我就以新的事件的时间为准，n 秒后才执行，
+     *
+     * @param  {function} func        回调函数
+     * @param  {number}   wait        表示时间窗口的间隔
+     * @param  {boolean}  immediate   设置为ture时，是否立即调用函数
+     * @return {function}             返回客户调用函数
+    */
+    //简易
+    function debounce(func, wait) {
+      var timeout;
+
+      return function () {
+        var context = this;
+        var args = arguments;
+
+        clearTimeout(timeout)
+        timeout = setTimeout(function () {
+          func.apply(context, args)
+        }, wait);
+      }
+    }
+
+    function debounce(fn, wait, immediate) {
+      var timeout, result
+      return function () {
+        var context = this//保存this让其指向正确的对象
+        var args = arguments//保存函数的参数
+        if (timeout) clearTimeout(timeout)
+        //判断是否立即执行
+        if (immediate) {
+          var callnow = !timeout//立即执行的判断条件
+          timeout = setTimeout(function () {
+            timeout = null //改成null下一次不会clearTimeout
+          }, wait)
+          if (callnow) fn.apply(context, args)//执行
+        } else {
+          timeout = setTimeout(function () {
+            fn.apply(context, args)
+          }, wait)
+        }
+        return result//返回执行结果
+      }
+    }
+
+
+  </script>
+</body>
+
+</html>

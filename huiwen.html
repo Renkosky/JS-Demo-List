@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>huiwen</title>
+</head>
+
+<body>
+  <script>
+    const longestPalindrome = function (s) {
+      let len = s.length
+      let ans = 1;        // ans 记录最长回文子串长度 
+      let i, j, L;
+      // 边界 
+      if (len < 1) return s
+      let dp = new Array()
+      for (i = 0; i < len; ++i) {
+        dp[i] = new Array()
+        dp[i][i] = 1;
+        if (i < len - 1) {
+          if (s[i] == s[i + 1]) {
+            dp[i][i + 1] = 1;
+            ans = 2;
+          }
+        }
+      }
+      // 状态转移方程 
+      for (L = 3; L <= len; ++L) {            // 枚举子串长度 
+        for (i = 0; i + L - 1 < len; ++i) {    // 枚举子串的起始节点 
+          j = i + L - 1;                // 子串的右端结点 
+          if (s[i] == s[j] && dp[i + 1][j - 1] == 1) {
+            dp[i][j] = 1;
+            ans = L;            // 更新最长回文子串长度 
+          }
+        }
+      }
+    }
+    // const longestPalindrome = function (s) {
+    //   let len = s.length
+    //   let dp = new Array()
+    //   let start = 0,
+    //     max = 1
+
+    //   if (len < 1) return s
+    //   for (let i = 0; i < len; i++) {
+    //     dp[i] = new Array()
+    //     for (let j = 0; j < len; j++) {
+    //       if (j === i) {
+    //         dp[i][j] = 1
+    //       } else {
+    //         dp[i][j] = 0
+    //       }
+    //     }
+    //   }
+    //   for (let j = 0; j < len; j++) {
+    //     for (let i = j - 1; i >= 0; i--) {
+    //       if (s[i] === s[j]) {
+    //         if (j - i == 1) {
+    //           dp[i][j] = 2
+    //         } else {
+    //           if (dp[i + 1][j - 1] > 0) {
+    //             dp[i][j] = dp[i + 1][j - 1] + 2
+    //           } else {
+    //             dp[i][j] = 0
+    //           }
+    //         }
+    //       } else {
+    //         dp[i][j] = 0
+    //       }
+    //       if (dp[i][j] > max) {
+    //         max = dp[i][j]
+    //         start = i
+    //       }
+    //     }
+    //   }
+    //   console.log(s.slice(start, max))
+
+    //   return s.slice(start, max)
+    // }
+    longestPalindrome('abadd')
+  </script>
+</body>
+
+</html>

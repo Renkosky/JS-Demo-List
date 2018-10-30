@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //var expression =/ pattern / flags
+        //pattern: 可以是任何正则表达式 
+        //flags: g 全局模式，会匹配所有字符串，而非在发现第一个匹配项就停止
+        //       i 不区分大小写
+        //       m 表示多行模式
+        var pattern1 = /at/g;//匹配所有at
+        var pattern2 = /[b,c]at/i; //匹配第一个bat或者 cat
+        var pattern3 = /.at/gi; //匹配所有以at结尾的三个字字符
+        //reg构造函数
+        var pattern4 = new RegExp("[b,c]at","i");
+        var text = "asssatasat2"
+        var matches = pattern1.exec(text);
+        console.log(matches);
+        console.log(matches.index);
+        console.log(matches.input);
+    </script>
+</body>
+</html>

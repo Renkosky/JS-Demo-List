@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [1,1,1,1];
+        var brr = [];
+        var count = 0;
+    for(var i=0;i<3;i++){
+        var init = i + 1;
+    for(var j=i+1;j<4;j++){
+        if(arr[j]!=arr[j-1] || j == init){
+            brr.push(arr[i]-arr[j]);
+        }
+    }
+}
+brr.sort();
+    for (var i = 0; i < brr.length; i++) {
+        if (brr[i] == 2) {
+            count++;
+        }
+    }
+    </script>
+</body>
+</html>

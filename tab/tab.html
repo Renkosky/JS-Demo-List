@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        
+    ul,li{
+        list-style: none;
+
+    }
+    ul {
+        display: flex;
+        padding-bottom: 10px; 
+        border-bottom: 1px solid #b4b4b4;
+        padding: 0px;
+    }
+    ul li {       
+        flex: 1 1 auto;
+        width: 40px;
+        padding-left:10px;
+        cursor: pointer; 
+    }
+    li:hover{
+      background-color: rgba(205, 205, 205, 0.6);
+    }
+    .box{
+        margin: 200px;
+        height: 100%;
+        box-shadow: 1px 1px 15px #b4b4b4;
+    }
+    .hide{
+        display: none;
+    }
+    </style>
+</head>
+<body>
+    <div class="box">
+      <div class="nav">
+        <ul>
+
+            <li>标题1</li>
+            <li>标题2</li>
+            <li>标题3</li>
+        </ul>
+      </div>
+      <div class="content ">
+        内容1
+      </div>
+      <div class="content hide">
+        内容2
+      </div>
+      <div class="content hide">
+        内容3
+      </div>
+    </div>
+  <script>
+        var title = document.getElementsByTagName('li');
+        var content = document.getElementsByClassName('content');
+        var len = title.length;
+        for (var i = 0; i < len; i++) {  
+            title[i].index = i              
+              title[i].onclick = function () {
+                for (var j = 0; j < len; j++) {
+                    content[j].classList.add('hide');
+                } 
+                    content[this.index].classList.toggle('hide');                           
+            }          
+        }
+      
+  </script>
+</body>
+</html>

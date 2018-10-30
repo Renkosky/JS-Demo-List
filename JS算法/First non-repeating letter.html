@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+  </body>
+  <script type="text/javascript">
+  firstNonRepeatingLetter('sTreSS')
+  function firstNonRepeatingLetter(s) {
+    var arr = [];
+    var arr2 =[];
+    for (var i = 0; i < s.length; i++) {
+      if(arr.indexOf(s[i].toLowerCase())==-1){
+        arr.push(s[i].toLowerCase());
+        arr2.push(s[i]);
+      }else {
+        arr.splice(arr.indexOf(s[i].toLowerCase()),1);
+        arr2.splice(arr2.indexOf(s[i].toLowerCase()),1);
+      }
+    }
+    if (arr2.length==0) {
+      return "";
+    }
+    if(arr[0]==','){
+      return arr[0];
+    }else {
+      return arr2[0];
+    }
+}
+/*
+function firstNonRepeatingLetter(s) {
+  for(var i in s) {
+    if(s.match(new RegExp(s[i],"gi")).length === 1) {
+      return s[i];
+    }
+  }
+  return '';
+}
+
+function firstNonRepeatingLetter(s) {
+  var t=s.toLowerCase();
+  for (var x=0;x<t.length;x++)
+    if(t.indexOf(t[x]) === t.lastIndexOf(t[x]))
+      return s[x];
+  return "";
+}
+
+function firstNonRepeatingLetter(s) {
+    var search = s.toLowerCase();
+
+    for (var i = 0; i < search.length; ++i) {
+        var str = search.slice(0, i) + search.slice(i + 1);
+        if((str.indexOf(search[i]) === -1)) {
+            return s[i];
+        }
+    }
+    return '';
+}
+*/
+  </script>
+</html>

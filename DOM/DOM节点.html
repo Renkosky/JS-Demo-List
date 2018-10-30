@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DOM节点</title>
+</head>
+
+<body>
+  123
+  <div class="ss">
+    222
+    <ul class='uu'>
+      <li id='a'>1</li>
+      <li class='b'>2</li>
+      <li>3</li>
+      <li>4</li>
+    </ul>
+
+  </div>
+  <script>
+    //每个节点都有childNodes属性，其中保存一个nodelist对象（类数组对象，保存一组有序的节点）
+    //非ie会获取文本节点，可以使用 .children 替代
+    var ul = document.getElementsByClassName('ss')
+    //parentNode文档树父节点
+    ul.parentNode
+    //next/previousElementSibling 可以获取children列表中的上一个/下一个节点
+    //next/previousSibling  可以获取childrenNodes列表中的上一个/下一个节点，包括文本节点
+    document.getElementsByClassName('b')[0].nextElementSibling//<li>3</li>
+    document.getElementsByClassName('b')[0].nextSibling//#text
+    //first/lastElementChild 可以获取children列表中的第一个/最后一个元素
+    document.getElementsByClassName('uu')[0].firstElementChild
+    //getElementsByClassName 返回 HTMLcollection
+    //getElementById 返回元素节点
+    //getElementsByTag 返回HTMLcollection
+
+
+    //     NodeList实例对象是一个类似数组的对象，它的成员是节点对象。Node.childNodes、document.querySelectorAll()返回的都是NodeList实例对象.
+
+    // NodeList实例对象可能是动态集合，也可能是静态集合。所谓动态集合就是一个活的集合，DOM树删除或新增一个相关节点，都会立刻反映在NodeList接口之中。Node.childNodes返回的，就是一个动态集合。
+    var div_list = document.querySelectorAll('div'); // 返回 NodeList
+    var div_array = Array.prototype.slice.call(div_list); // 将 NodeList 转换为数组
+
+    //ES6 - Array.from();
+    var div_array_from = Array.from(div_list); //将 NodeList 转换为数组
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>form</title>
+</head>
+
+<body>
+  <form action="" id='form'>
+    name: <input type="text" name='name' id='input1'>
+    password: <input type="text" name='password' id='input2'>
+    <input type="reset" value="reset">
+    <select name="sssle" id="slect">
+      <option value="123v">123</option>
+      <option value="234v">234</option>
+    </select>
+  </form>
+  <script>
+    var form = document.getElementById('form')
+    var input = document.getElementById('input1')
+    var input2 = document.getElementById('input2')
+    input.addEventListener('keyup', event => {
+      console.log(event.charCode)//按下键的unicode编码
+      console.log(event.keyCode);//keyCode键盘代码
+      //event.ctrlkey事件触发时是否按住control
+    })
+    input2.addEventListener('keypress', event => {
+      console.log()
+      if (event.ctrlKey) {
+        console.log('ctrl');
+
+      }
+    })
+    console.log(form.elements);//HTMLFormControlsCollection表单中所有的元素
+    var selectbox = document.getElementById('slect') //
+    selectbox.options//HTMLOptionsCollection(2)包含所有的options
+    //
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>insertionSort</title>
+</head>
+
+<body>
+  <script>
+    //插入排序 O(n^2) 稳定
+    insertionSort = function (arr) {
+      var length = arr.length, //{1}
+        j, temp;
+      for (var i = 1; i < length; i++) { //默认第一个元素是有序的
+        j = i; //排序元素的最初位置
+        temp = arr[i]; //{4} 
+        while (j > 0 && arr[j - 1] > temp) { //{5}
+          arr[j] = arr[j - 1]; //{6}
+          j--;//不断向前移动为了与前一个元素比较
+        }
+        arr[j] = temp; //j此时为插入的位置
+      }
+      console.log(arr);
+
+    }
+    var array = [2, 1, 3, 5, 4, 8, 9, 7]
+    insertionSort(array)
+
+  </script>
+</body>
+
+</html>

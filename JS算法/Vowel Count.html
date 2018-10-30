@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Vowel Count</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+    var str = "pear tree";
+    getCount(str);
+    function getCount(str) {
+      var vowelsCount = 0;
+      for (var i = 0; i < str.length; i++) {
+        switch (str[i]) {
+          case "a": vowelsCount++;break;
+          case "e": vowelsCount++;break;
+          case "i": vowelsCount++;break;
+          case "o": vowelsCount++;break;
+          case "u": vowelsCount++;break;
+
+          default:break;
+        }
+      }
+// enter your majic here
+document.write(vowelsCount)
+
+return vowelsCount;
+}/*function getCount(str) {
+  return (str.match(/[aeiou]/ig)||[]).length;
+}*/
+    </script>
+  </body>
+</html>

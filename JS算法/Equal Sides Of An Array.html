@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+    var arr = [1,2,3,4,3,2,1];
+    findEvenIndex(arr);``
+    function findEvenIndex(arr)
+    {
+        var i = 0;
+        for (var i = 1; i < arr.length; i++) {
+          var sumleft = 0;
+          var sumright = 0;
+          for(var j = 0;j < i;j++){
+             sumleft += parseInt(arr[j]);
+          }
+
+          for (var k = i+1; k < arr.length; k++) {
+            sumright += parseInt(arr[k]);
+          }
+          if(sumleft==sumright){
+            console.log(sumleft);
+            return i;
+          }
+        }
+        return -1;
+    }
+/*function findEvenIndex(arr)
+{
+  for(var i=1; i<arr.length-1; i++) {
+    if(arr.slice(0, i).reduce((a, b) =>  a+b) === arr.slice(i+1).reduce((a, b) =>  a+b)) {
+      return i;
+    }
+  }slice() 方法可从已有的数组中返回选定的元素。arr.reduce(callback[, initialValue])
+  return -1;
+}
+function findEvenIndex(arr)
+{
+  var left = 0, right = arr.reduce(function(pv, cv) { return pv + cv; }, 0);
+  for(var i = 0; i < arr.length; i++) {
+      if(i > 0) left += arr[i-1];
+      right -= arr[i];
+
+      if(left == right) return i;
+  }
+
+  return -1;
+}
+    </script>
+  </body>
+</html>

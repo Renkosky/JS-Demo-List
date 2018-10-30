@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="list">
+        <li>first</li>
+        <li>second</li>
+        <li>third</li>
+    </ul>
+    <div id='div1'>1</div>
+    <div id='div2'></div>
+    <div id='div3'></div>
+
+    <ul id="userlist">
+      <li>张三</li>
+      <li>李四</li>
+      <li>王五</li>
+    </ul>
+    <script>
+      // var list = document.getElementById('list')
+      // var listchild = list.childNodes;//childNodes保存一组有序的节点
+      // // console.log(list.getAttribute('id'));
+      // var o = document.getElementById("div2").previousSibling;//previousSibling指的是包含**文本节点**的上一个兄弟节点，
+      // var p = document.getElementById("div2").previousElementSibling; //而previousElementSibling指的是上一个兄弟元素节点
+      // console.log(o);
+      // console.log(p);
+      
+      // //dom1遍历
+      // var i=0,
+      //     len,
+      //     child = list.firstElementChild;
+      //     while (child!=null) {
+      //       console.log(i+1);
+      //       i=i+1;
+      //       child = child.nextElementSibling;
+      //     }
+
+var list = document.getElementById("userlist");
+var item = document.createElement('li')
+var text = document.createTextNode("text");
+item.appendChild(text);
+list.appendChild(item);
+var func = function(event) {     
+  var target = event.target || event.srcElement
+  var preElem = target.previousElementSibling;
+  var i = 0;     
+  while (preElem) {         
+    i+=1;         
+    preElem = preElem.previousElementSibling;
+  }     
+  alert(i);
+  };
+  list.addEventListener("click",  func);
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <script>　　var name = "The Window";
+
+　1.　var object = {
+　　　　name : "My Object",
+
+　　　　getNameFunc : function(){
+　　　　　　return function(){
+　　　　　　　　return this.name;
+　　　　　　};
+
+　　　　}
+
+　　};
+
+　　alert(object.getNameFunc()());
+　　var name1 = "The Window";
+
+ 2.　var object = {
+　　　　name1 : "My Object",
+
+　　　　getNameFunc : function(){
+　　　　　　var that = this;
+　　　　　　return function(){
+　　　　　　　　return that.name1;
+　　　　　　};
+
+　　　　}
+
+　　};
+
+　　alert(object.getNameFunc()());
+
+</script> -->
+<script>
+    //1. var x = 20;
+    // var a = {
+    //     x: 15,
+    //     fn: function () {
+    //         var x = 30;
+    //         return function () {
+    //             return x;
+    //         };
+    //     }
+    // }
+    //2. var x = 20;
+    //     var a = {
+    //         x: 15,
+    //         fn: function () {
+    //             return function () {
+    //                 return x;
+    //             };
+    //         }
+    //     }
+    // console.log(a.fn())
+    // console.log(a.fn()());
+    // console.log((a.fn())());
+    // console.log((a.fn())() == a.fn()());
+    // console.log(a.fn().call(this));
+    // console.log(a.fn().call(a));
+    for (var i = 1; i <= 5; i++) {
+
+            setTimeout(function timer() {
+
+                console.log(i);
+
+            }, 1000);
+
+        }
+</script>
+</body>
+</html>

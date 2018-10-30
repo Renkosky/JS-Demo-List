@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <label>查询员工</label>
+  <input type="text" id="keywords">
+  <button type="button" name="button" id="search">查询</button>
+  查询结果：<p id="result"></p>
+  <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+  <script type="text/javascript">
+    //  $(document).ready(function(){
+    //    $('#search').click(function(){
+    //      $.ajax({
+    //        type: "GET",
+    //        url: "http://localhost/AJAX/server.php?number=" + $("#keywords").val(),
+    //        dataType: "json",
+    //        success: function(data) {
+    //  				if (data.success) {
+    //  					$("#result").html(data.msg);
+    //  				} else {
+    //  					$("#result").html("出现错误：" + data.msg);
+    //  				}
+    //  			},
+    //  			error: function(jqXHR){
+    //  			   alert("发生错误：" + jqXHR.status);
+    //  			},
+    //      })
+    //    })
+    //  })
+    document.getElementById('search').onclick = function () {
+      var request = new XMLHttpRequest();
+      request.open("GET", "server.php?number=" + document.getElementById('keywords').value);
+      request.send();
+      request.onreadystatechange = function () {
+        if (request.readyState === 4) {
+          if (request.status === 200) {
+            var data = JSON.parse(request.responseText);
+            if (data.success) {
+              document.getElementById("result").innerHTML = data.msg;
+            } else {
+              document.getElementById("result").innerHTML = "出现错误:" + data.msg
+            }
+          } else {
+            alert("发生错误：" + request.status);
+          }
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

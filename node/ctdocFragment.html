@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>菜鸟教程(runoob.com)</title>
+</head>
+
+<body>
+
+    <ul>
+        <li>Coffee</li>
+        <li>Tea</li>
+    </ul>
+    <p id="demo">单击按钮更改列表项,使用createDocumentFragment方法,然后在列表的最后一个孩子添加列表项。</p>
+    <button onclick="myFunction()">点我</button>
+    <script>
+        function myFunction() {
+            var d = document.createDocumentFragment();
+            d.appendChild(document.getElementsByTagName("LI")[0]);
+            d.childNodes[0].childNodes[0].nodeValue = "Milk";
+            document.getElementsByTagName("UL")[0].appendChild(d);
+        };
+//如果使用appendChid方法将原dom树中的节点添加到DocumentFragment中时，会删除原来的节点。 
+    </script>
+
+</body>
+
+</html>

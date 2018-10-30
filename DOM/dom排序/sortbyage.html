@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th>name</th>
+        <th>age</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>张三</td>
+        <td>17</td>
+      </tr>
+      <tr>
+        <td>李四</td>
+        <td>43</td>
+      </tr>
+      <tr>
+        <td>王五</td>
+        <td>22</td>
+      </tr>
+      <tr>
+        <td>小刘</td>
+        <td>9</td>
+      </tr>
+      <tr>
+        <td>黄三</td>
+        <td>20</td>
+      </tr>
+    </tbody>
+  </table>
+  <script>
+    var tr = document.getElementsByTagName('tr')
+    let newNode = document.createDocumentFragment()
+    function sortByage(property) {
+      return function (a, b) {
+        var value1 = a.children[1].innerText
+        var value2 = b.children[1].innerText;
+        return value1 - value2;
+      }
+    }
+
+    Array.from(tr).slice(1).sort(sortByage('age')).forEach(item => {
+      newNode.appendChild(item)
+    })
+    document.querySelector('tbody').appendChild(newNode)
+
+  </script>
+</body>
+
+</html>

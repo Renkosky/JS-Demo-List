@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script type="text/javascript" src="vue.js"></script>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div id="app">
+      <p>
+        {{message}}
+      </p>
+    </div>
+    <div id="app2">
+      <p>{{message1}}</p>
+      <input v-model="message1"><!--双向绑定-->
+    </div>
+
+<script type="text/javascript">
+
+new Vue({
+  el:'#app',
+  data:{
+    message: 'hello Vue.js'
+  }
+})
+new Vue({
+  el:'#app2',
+  data:{
+    message1: 'hello Vue.js22'
+  }
+})
+</script>
+  </body>
+</html>

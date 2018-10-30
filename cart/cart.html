@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+    <style>
+    a{
+        text-decoration: none;
+    }
+    ul,li{
+        list-style: none;
+
+    }
+    ul {
+        display: flex;
+        padding-bottom: 10px; 
+        border-bottom: 1px solid #b4b4b4;
+    }
+    ul li {
+        
+        flex: 1 1 auto;
+        min-width: 140px;
+    }
+    .wrap{
+        height: 100%;
+        width: 100%;   
+    }
+    .cart{
+        margin: 40px;
+        font-size: 20px;
+        min-width: 1000px;
+        box-shadow: 1px 1px 15px #b4b4b4;
+    }
+    .product-img{
+        margin: 0px;
+        width: 100px;
+        height: 100px;
+    }
+  
+    .product-img img {
+        height: 100%;
+        width: 100%;
+    }
+    .count input{
+        width: 50px;
+    }
+    </style>
+    <title>cart</title>
+</head>
+<body>
+    <div class="wrap">
+        <div class="cart">
+             
+                <ul>
+                    <li><input type="checkbox" class="checkall">全选</li>
+                    <li></li>
+                    <li>名称</li>
+                    <li>作者</li>
+                    <li>单价</li>
+                    <li>数量</li>
+                    <li>总价</li>
+                </ul>
+        
+            <div class="product">
+                <div class="product-info">
+                    <ul>
+                        <li><input type="checkbox" class="check"></li>
+                        <li>   
+                            <div class=" product-img">
+                                <img src="./images/interstellar.jpg" >
+                            </div>
+                        </li>
+                        <li>爱乐之城</li>
+                        <li>Various Artists</li>
+                        <li class="price">200</li>
+                        <li class="count"><a href="#" class="min_0">-</a><input type="text" value="1"><a href="#" class="plus_0">+</a></li>
+                        <li class="total"></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-info">
+                    <ul>
+                        <li><input type="checkbox" class="check"></li>
+                        <li>   
+                            <div class=" product-img">
+                                <img src="./images/Sgt.jpg" >
+                            </div>
+                        </li>
+                        <li>Sgt pepper</li>
+                        <li>beatles</li>
+                        <li class="price">2200</li>
+                        <li class="count"><a href="#" class="min_1">-</a><input type="text" value="1"><a href="#" class="plus_1">+</a></li>
+                        <li class="total"></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-info">
+                    <ul>
+                        <li><input type="checkbox" class="check"></li>
+                        <li>   
+                            <div class=" product-img">
+                                <img src="./images/The Beatles 1.jpg" >
+                            </div>
+                        </li>
+                        <li><div>One</div></li>
+                        <li><div>beatles</div></li>
+                        <li class="price">2000</li>
+                        <li class="count"><a href="#" class="min_2">-</a><input type="text" value="1"><a href="#" class="plus_2">+</a></li>
+                        <li class="total"></li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <ul>
+                <li>已选择</li>
+                <li>总计:</li>
+                </ul>
+            </div>
+        </div>      
+    </div>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+       
+            function product (price,count) {
+                this.price = price;
+                this.count = count;
+            }
+            product.prototype =  {
+                constructor: product,
+                total:function () {                  
+                    return this.price*this.count;                
+                }
+            }
+
+            var products = []; 
+            len = $('.product-info ul').length;       
+            for (var i = 0; i < len; i++) {
+                var prices = $('.price')[i].innerText; 
+                var counts = parseInt($('.count input')[i].value);
+                var item = new product(prices,counts);
+                products.push(item);
+                $('.total')[i].innerText = products[i].total();
+            };           
+            for (var i = 0; i < len; i++) {
+                $('.min_'+i).bind('click',{index:i},min)                                  
+            }
+
+            for (var i = 0; i < len; i++) {
+                $('.plus_'+i).bind('click',{index:i},add)                                  
+            }
+
+            function min(event) {
+                var i= event.data.index
+                products[i].count = products[i].count - 1;
+                $('.total')[i].innerText = products[i].total();
+                    
+            }
+
+            function add(event) {
+                var i= event.data.index
+                products[i].count = products[i].count + 1;
+                $('.total')[i].innerText = products[i].total();
+            }    
+    </script>
+</body>
+</html>

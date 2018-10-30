@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>textcontent</title>
+    <script type="text/javascript">
+    function myfunction()
+    {
+    //  var c = document.getElementsByTagName("button");
+      var w = document.getElementsByTagName("p")[0];
+      var text = w.textContent;
+      w.textContent = "hellow world!";
+     }
+    </script>
+  </head>
+  <body>
+    <p>
+      hello
+    </p>
+    <button type="button" name="button" onclick="myfunction()">更改p内容</button>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .div1 {
+      width: 200px;
+      background-color: bisque;
+      margin: 0 auto
+    }
+
+    .div2 {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background-color: pink;
+      /* 方便看效果 */
+      margin: auto;
+    }
+
+    .div3 {
+      position: relative;
+      /* 相对定位或绝对定位均可 */
+      width: 500px;
+      height: 300px;
+      top: 50%;
+      left: 50%;
+      margin: -150px 0 0 -250px;
+      /* 外边距为自身宽高的一半 */
+      background-color: yellowgreen;
+      /* 方便看效果 */
+    }
+
+    .div4 {
+      position: absolute;
+      /* 相对定位或绝对定位均可 */
+      width: 500px;
+      height: 300px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgb(225, 192, 255);
+    }
+
+    .father {
+      border: 2px solid deeppink;
+      width: 100px;
+      height: 100px;
+    }
+
+    .pa {
+      position: absolute;
+    }
+
+    .box {
+      background-color: #cdcdcd;
+      width: 50px;
+      height: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="father">
+    <div class="pa box"></div>
+  </div>
+  <div class="div1">水平居中</div>
+  <div class="div2">绝对定位水平居中</div>
+  <div class="div3">居中3</div>
+  <div class="div4"></div>
+</body>
+
+</html>

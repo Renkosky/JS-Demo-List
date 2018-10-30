@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .force-overflow {
+            min-height: 450px;
+        }
+
+        /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+        #div1::-webkit-scrollbar {
+            width: 16px;
+            height: 2px;
+            background-color: #F5F5F5;
+        }
+
+        /*定义滚动条轨道 内阴影+圆角*/
+        #div1::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            background-color: #F5F5F5;
+        }
+
+        /*定义滑块 内阴影+圆角*/
+        #div1::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+            background-color: #555;
+            height: 20px;
+        }
+
+        /* #style-1::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            background-color: #F5F5F5;
+        } */
+
+        #style-1::-webkit-scrollbar {
+            width: 12px;
+            background-color: #F5F5F5;
+        }
+
+        #style-1::-webkit-scrollbar-thumb {
+            border-radius: 100px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+            background-color: #555;
+        }
+
+        .scrollbar {
+            margin-left: 30px;
+            float: left;
+            height: 300px;
+            width: 65px;
+            background: #F5F5F5;
+            overflow-y: scroll;
+            margin-bottom: 25px;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="scrollbar" id="div1">
+        <div class="force-overflow"></div>
+    </div>
+
+</body>
+
+</html>

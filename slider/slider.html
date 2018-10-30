@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        a {
+            text-decoration: none;
+        }
+
+        .slide {
+            overflow: hidden;
+            position: relative;
+            margin: 60px;
+            width: 680px;
+            height: 800px;
+
+        }
+
+        .slide-show {
+            display: flex;
+            position: absolute;
+            transition: all 1s ease;
+            width: 100%;
+            height: 100%
+        }
+
+        .slide-show img {
+            flex: 1 0 auto;
+            width: 100%;
+            height: 100%
+        }
+
+        .slide-dots-icon {
+            width: 16px;
+            height: 16px;
+            border-radius: 100%;
+            background-color: grey
+        }
+
+        .on {
+            background-color: black;
+        }
+
+        .slide-pages {
+            position: absolute;
+            bottom: 10%;
+            right: 60%;
+            left: 40%;
+            min-width: 200px;
+        }
+
+        .slide-pages li {
+            list-style: none;
+            float: left;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        .arrow {
+            cursor: pointer;
+            /* display: none;  */
+            line-height: 39px;
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            z-index: 1;
+            top: 400px;
+            background-color: RGBA(0, 0, 0, .3);
+            color: #fff;
+        }
+
+        .arrow:hover {
+            background-color: RGBA(0, 0, 0, .7);
+        }
+
+        #prev {
+            left: 20px;
+        }
+
+        #next {
+            right: 20px;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="slide">
+        <div class="slide-show" id="1" style="left: -680px;">
+            <img src="1.jpg" alt="">
+            <img src="2.jpg" alt="">
+            <img src="3.jpg" alt="">
+            <img src="4.jpg" alt="">
+            <img src="5.jpg" alt="">
+        </div>
+        <ul class="slide-pages">
+            <li class="slide-dots-icon"></li>
+            <li class="slide-dots-icon"></li>
+            <li class="slide-dots-icon"></li>
+            <li class="slide-dots-icon"></li>
+            <li class="slide-dots-icon"></li>
+        </ul>
+        <a href="javascript:;" id="prev" class="arrow">&lt;</a>
+        <a href="javascript:;" id="next" class="arrow">&gt;</a>
+    </div>
+    <script>
+        var prevarrow = document.getElementById('prev');
+        var nextarrow = document.getElementById('next');
+        var slide = document.getElementsByClassName('slide-show')[0];
+        var dots = document.getElementsByClassName('slide-dots-icon');
+        var index = 1;
+        function trans(offset) {
+            var newLeft = parseInt(slide.style.left);
+            slide.style.left = newLeft + offset + 'px';
+            newLeft = newLeft + offset
+            if (newLeft > 0) {
+                slide.style.webkitTransform = `translate(${-680 * (dots.length - 1)}px)`;
+            }
+            else if (newLeft < (-680 * (dots.length - 1))) {
+                slide.style.webkitTransform = `translate(${680 * (dots.length)}px)`;
+            }
+        }
+        function showbutton(index) {
+            for (let i = 0; i < dots.length; i++) {
+                if (dots[i].classList.contains('on')) {
+                    dots[i].classList.remove('on');
+                    break;
+                }
+            }
+            dots[index].classList.add('on');
+        }
+        showbutton(index);
+        prevarrow.onclick = function () {
+            if (index <= 0) {
+                index = dots.length - 1
+            } else {
+                index--;
+            }
+            trans(-680);
+            showbutton(index)
+        };
+        nextarrow.onclick = function () {
+            if (index >= dots.length - 1) {
+                index = 0
+            } else {
+                index++;
+            }
+            trans(680);
+            showbutton(index)
+        }
+    </script>
+</body>
+
+</html>

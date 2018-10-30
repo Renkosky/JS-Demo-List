@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="ul">
+        <li>1111</li>
+        <li>2222</li>
+        <li>3333</li>
+        <li>4444</li>
+        <li>5555</li>
+    </ul>
+    
+    <script type="text/javascript">
+        var oul = document.getElementById("ul");
+        var ali = oul.getElementsByTagName("li");
+        // for (var i = 0; i < ali.length; i++) {
+        //     // (function (i) {   //这里的i类似形参 
+        //     //     ali[i].onclick = function () {
+        //     //         alert(i);
+        //     //     }
+        //     // })(i);   //这里的i类似实参
+        //         ali[i].onclick = function (index) {
+        //             return function () {
+        //                 alert(index)
+        //             }
+        //         }(i);
+        // }
+        for (let i = 0; i < ali.length; i++) {
+            ali[i].index = i + 1;    
+        } 
+        oul.addEventListener("click",function (event) {
+            var ev = event || window.event;
+            var target = ev.target || ev.srcElement;
+            if (target.localName == 'li') {
+                console.log(target.index);
+            }
+        }) 
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    .tab_content {
+      position: absolute;
+    }
+
+    #tab1 {
+      background: bisque
+    }
+
+    #tab2 {
+      background: greenyellow
+    }
+
+    #tab3 {
+      background: rosybrown
+    }
+
+    #tab1:target,
+    #tab2:target,
+    #tab3:target {
+      z-index: 1;
+    }
+  </style>
+  <title>csstab2</title>
+</head>
+
+<body>
+  </pre>
+  <div class="tablist"> 
+    <ul class="tabmenu">
+      <li><a href="#tab1">标签一</a></li> 
+      <li><a href="#tab2">标签二</a></li> <li><a href="#tab3">标签三</a></li> 
+    </ul> 
+    <div id="tab1" class="tab_content">tab1 content</div> 
+    <div id="tab2" class="tab_content">tab2
+      content</div> <div id="tab3" class="tab_content">tab3 content</div>
+  </div>
+</body>
+
+</html>

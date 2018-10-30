@@ -1,0 +1,63 @@
+[html] view plain copy
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>进度条测试</title>
+</head>
+
+<body>
+
+    <input type="file" id="file_upload" />
+    <input type="button" value="上传" id="upload" />
+    <div style="background:#848484;width:100px;height:10px;margin-top:5px">
+        <div id="progressNumber" style="background:#428bca;width:0px;height:10px">
+        </div>
+    </div>
+    <font id="percent">0%</font>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script>  
+    var file = null;
+    $(function () {
+        $("#upload").click(function () {
+            upload();
+        });
+    });
+    var input = document.getElementById("file_upload");
+
+    //文件域选择文件时, 执行readFile函数  
+    input.addEventListener('change', readFile, false);
+
+    function readFile() {
+        file = this.files[0];
+    }
+    //上传文件  
+    function upload() {
+        var xhr = new XMLHttpRequest();
+
+        var fd = new FormData();
+
+        fd.append("fileName", file);
+
+        //监听事件  
+        xhr.upload.addEventListener("progress", uploadProgress, false);
+
+        //发送文件和表单自定义参数  
+        xhr.open("POST", "upload.php", true);
+
+        xhr.send(fd);
+    }
+
+    function uploadProgress(evt) {
+        if (evt.lengthComputable) {
+            //evt.loaded：文件上传的大小   evt.total：文件总的大小                      
+            var percentComplete = Math.round((evt.loaded) * 100 / evt.total);
+            //加载进度条，同时显示信息            
+            $("#percent").html(percentComplete + '%')
+            $("#progressNumber").css("width", "" + percentComplete + "px");
+        }
+    }  
+</script>
+
+</html>

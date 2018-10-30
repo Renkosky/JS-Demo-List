@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>quickSort</title>
+</head>
+
+<body>
+  <script>
+    //不稳定 O(nlogn)~O(n^2) 辅助空间O(logn)~O(n)
+    // 从序列中挑出一个元素，作为"基准"(pivot).
+    // 把所有比基准值小的元素放在基准前面，所有比基准值大的元素放在基准的后面（相同的数可以到任一边），这个称为分区(partition)操作。
+    // 对每个分区递归地进行步骤1~2，递归的结束条件是序列的大小是0或1，这时整体已经被排好序了。
+    function swap(array, a, b) {
+      // es6版
+      [array[a], array[b]] = [array[b], array[a]];
+      // es5版
+      /* const temp = array[a];
+      array[a] = array[b];
+      array[b] = temp; */
+    }
+    // var quick = function (array, left, right) {
+    //   var index; //{1}
+    //   if (array.length > 1) { //{2}
+    //     index = partition(array, left, right); //index为此时左指针的位置
+    //     if (left < index - 1) { //{4}
+    //       quick(array, left, index - 1); //{5}
+    //     }
+    //     if (index < right) { //{6}
+    //       quick(array, index, right); //{7}
+    //     }
+    //   }
+    // }
+    // function partition(array, left, right) {
+    //   var pivot = array[Math.floor((right + left) / 2)], //{8}
+    //     i = left, //{9}
+    //     j = right; //{10}
+    //   while (i <= j) { //{11}
+    //     while (array[i] < pivot) { //{12}
+    //       i++;
+    //     }
+    //     while (array[j] > pivot) { //{13}
+    //       j--;
+    //     }
+    //     if (i <= j) { //{14}
+    //       swap(array, i, j); //{15}
+    //       i++;
+    //       j--;
+    //     }
+    //   }
+    //   return i; //{16}
+    // };
+    function Partition(A, left, right)  // 划分函数
+    {
+      let pivot = A[right];               // 这里每次都选择最后一个元素作为基准
+      let tail = left - 1;                // tail为小于基准的子数组最后一个元素的索引
+      for (let i = left; i < right; i++)  // 遍历基准以外的其他元素
+      {
+        if (A[i] <= pivot)              // 把小于等于基准的元素放到前一个子数组末尾
+        {
+          swap(A, ++tail, i);
+        }
+      }
+      swap(A, tail + 1, right);           // 最后把基准放到前一个子数组的后边，剩下的子数组既是大于基准的子数组
+      // 该操作很有可能把后面元素的稳定性打乱，所以快速排序是不稳定的排序算法
+      return tail + 1;                    // 返回基准的索引
+    }
+
+    function QuickSort(A, left, right) {
+      if (left >= right)
+        return;
+      let pivot_index = Partition(A, left, right); // 基准的索引
+      QuickSort(A, left, pivot_index - 1);
+      QuickSort(A, pivot_index + 1, right);
+    }
+
+    var arr = [3, 5, 1, 6, 4, 7, 2]
+    QuickSort(arr, 0, arr.length - 1)
+    console.log(arr);
+
+  </script>
+
+
+</body>
+
+</html>

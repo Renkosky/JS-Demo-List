@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .rating {
+            display: flex;
+        }
+
+        .star {
+            flex: 0 1 auto;
+            width: 32px;
+            height: 30px;
+            margin-left: 10px;
+            background-image: url('iVPGGC.png');
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="rating">
+        <div class="star" id="1"></div>
+        <div class="star" id="2"></div>
+        <div class="star" id="3"></div>
+        <div class="star" id="4"></div>
+        <div class="star" id="5"></div>
+    </div>
+    <script>
+        var rate = (function () {
+            var init = function (el, num) {
+            var rating = document.getElementsByClassName(el)[0];
+            var star = rating.children;
+            //点亮函数
+            function light(num) {
+                for (var i = 0; i < star.length; i++) {
+                    if (i < num) {
+                        star[i].style.backgroundPosition = "-68px";
+                    } else {
+                        star[i].style.backgroundPosition = "";
+                    }
+                }
+            };
+
+            light(num);
+            
+            function getEventTarget(e) {
+                e = e || window.event;
+                return e.target || e.srcElement;
+            };
+
+            function onStar(e) {
+                var target = getEventTarget(e);
+                if (target.tagName.toLowerCase() == 'div') {
+                    light(target.id);
+                }
+            };
+                rating.onmouseover = function (e) {
+                    onStar(e);
+                };
+                rating.onclick = function (e) {
+                    num = e.target.id
+                    light(num);
+                    this.onclick = null;
+                    this.onmouseover = null;
+                    this.onmouseout = null;
+                };
+                rating.onmouseout = function () {
+                    light(num);
+                }
+            };       
+         
+
+            return {init: init};
+        })();
+        rate.init('rating',1)
+    </script>
+</body>
+
+</html>

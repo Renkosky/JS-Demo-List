@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="vue.js"></script>
+    <title></title>
+    <style media="screen">
+    body{
+      margin: 0px;
+      height:2000px;
+      width:1800px;
+    }
+        .container{
+          padding: 300px 600px 300px 600px;
+          font-size: 20px;
+        }
+        .container a{
+          text-decoration: none;
+          display: block;
+          float: left;
+          height: 40px;
+          width: 60px;
+          color: rgb(83, 95, 99);
+        }
+        .lefta{
+
+        }
+        .righta{
+
+        }
+    </style>
+  </head>
+  <body>
+        <div class="container" >
+              <div class="lefta" id="container">
+                <a href="" v-on:click="change">ONE</a>
+                {{message}}
+              </div>
+              <div class="righta" id="containera">
+                <a href="#">TWO</a>
+              </div>
+              <div class="">
+                {{message}}
+              </div>
+        </div>
+        <script type="text/javascript">
+          var text = new Vue({
+            el:'#container',
+            data:{
+              message:''
+            },
+            methods:{
+              change:function(){
+                this.message="hello~+~"
+              }
+            }
+
+          })
+        </script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>anmation</title>
+</head>
+
+<body>
+    <script>
+        //显示器16.7ms刷新间隔之前发生了其他绘制请求(setTimeout),导致
+        //requestAnimationFrame就是为了这个而出现的。我所做的事情很简单，跟着浏览器的绘制走，如果浏览设备绘制间隔是16.7ms，
+        //那我就这个间隔绘制；如果浏览设备绘制间隔是10ms, 我就10ms绘制。这样就不会存在过度绘制的问题，动画不会掉帧，自然流畅的说~~
+        var a = 0;
+        function step() {
+            a++;
+            console.log(a)
+            var g = requestAnimationFrame(step)
+            if (a >= 100) {
+                cancelAnimationFrame(g)
+            }
+
+        }
+        step()
+
+    </script>
+</body>
+
+</html>
