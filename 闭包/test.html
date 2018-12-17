@@ -1,80 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-</head>
-<body>
-    <!-- <script>　　var name = "The Window";
+  </head>
+  <body>
+    <!--
+      <script>　　var name = "The Window";
 
-　1.　var object = {
-　　　　name : "My Object",
+      　1.　var object = {
+      　　　　name : "My Object",
 
-　　　　getNameFunc : function(){
-　　　　　　return function(){
-　　　　　　　　return this.name;
-　　　　　　};
+      　　　　getNameFunc : function(){
+      　　　　　　return function(){
+      　　　　　　　　return this.name;
+      　　　　　　};
 
-　　　　}
+      　　　　}
 
-　　};
+      　　};
 
-　　alert(object.getNameFunc()());
-　　var name1 = "The Window";
+      　　alert(object.getNameFunc()());
+      　　var name1 = "The Window";
 
- 2.　var object = {
-　　　　name1 : "My Object",
+       2.　var object = {
+      　　　　name1 : "My Object",
 
-　　　　getNameFunc : function(){
-　　　　　　var that = this;
-　　　　　　return function(){
-　　　　　　　　return that.name1;
-　　　　　　};
+      　　　　getNameFunc : function(){
+      　　　　　　var that = this;
+      　　　　　　return function(){
+      　　　　　　　　return that.name1;
+      　　　　　　};
 
-　　　　}
+      　　　　}
 
-　　};
+      　　};
 
-　　alert(object.getNameFunc()());
+      　　alert(object.getNameFunc()());
 
-</script> -->
-<script>
-    //1. var x = 20;
-    // var a = {
-    //     x: 15,
-    //     fn: function () {
-    //         var x = 30;
-    //         return function () {
-    //             return x;
-    //         };
-    //     }
-    // }
-    //2. var x = 20;
-    //     var a = {
-    //         x: 15,
-    //         fn: function () {
-    //             return function () {
-    //                 return x;
-    //             };
-    //         }
-    //     }
-    // console.log(a.fn())
-    // console.log(a.fn()());
-    // console.log((a.fn())());
-    // console.log((a.fn())() == a.fn()());
-    // console.log(a.fn().call(this));
-    // console.log(a.fn().call(a));
-    for (var i = 1; i <= 5; i++) {
+      </script>
+    -->
+    <script>
+      //1. var x = 20;
+      // var a = {
+      //     x: 15,
+      //     fn: function () {
+      //         var x = 30;
+      //         return function () {
+      //             return x;
+      //         };
+      //     }
+      // }
+      //2. var x = 20;
+      //     var a = {
+      //         x: 15,
+      //         fn: function () {
+      //             return function () {
+      //                 return x;
+      //             };
+      //         }
+      //     }
+      // console.log(a.fn())
+      // console.log(a.fn()());
+      // console.log((a.fn())());
+      // console.log((a.fn())() == a.fn()());
+      // console.log(a.fn().call(this));
+      // console.log(a.fn().call(a));
+      // for (var i = 1; i <= 5; i++) {
+      //   setTimeout(function timer() {
+      //     console.log(i)
+      //   }, 1000)
+      // }
+      var foo = { n: 1 }
+      ;(function(foo) {
+        var foo
+        console.log(foo.n)
+        foo.n = 3
+        foo = { n: 2 }
+        console.log(foo.n)
+      })(foo)
+      console.log(foo.n)
 
-            setTimeout(function timer() {
+      var foo = { n: 1 } //全局作用域下的foo变量，是一个对象，引用类型
 
-                console.log(i);
+      //然后是一个立即执行的匿名函数，传入上面的foo，由于是引用类型
+      //所以匿名函数参数的foo即是对上面那个foo的引用
+      ;(function(foo) {
+        console.log(foo.n) //这里的foo就是全局作用域下的foo，n为1，所以第一次打印出1
+        foo.n = 3 //这里是设置全局作用域下的foo中n属性，将n变为3
+        var foo = { n: 2 } //这里是在这个匿名函数作用域内新建的一个foo变量，由于作用域不同，不覆盖全局作用域下的foo变量
+        console.log(foo.n) //这里由于是在匿名函数作用域内，首选打印匿名函数作用域内的foo.n，也就是上面的2
+      })(foo)
 
-            }, 1000);
-
-        }
-</script>
-</body>
+      console.log(foo.n) //最后，由于匿名函数中改变了全局作用域中的foo.n为3，所以打印出3
+    </script>
+  </body>
 </html>

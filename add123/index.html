@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // function add(a) {
+      //   return function(b) {
+      //     return function name(c) {
+      //       return a + b + c
+      //     }
+      //   }
+      // }
+
+      // var add = function(x) {
+      //   var sum = x
+      //   var tmp = function(y) {
+      //     sum += y
+      //     return tmp
+      //   }
+      //   tmp.valueOf = tmp.toString = function() {
+      //     return sum
+      //   }
+      //   return tmp
+      // }
+
+      // var add = function() {
+      //   var args = [].slice.call(arguments)
+      //   var tmp = function() {
+      //     //收集参数到args数组
+      //     args = args.concat([].slice.call(arguments))
+      //     return tmp
+      //   }
+      //   tmp.valueOf = tmp.toString = function() {
+      //     return args.reduce(function(first, second) {
+      //       return first + second
+      //     })
+      //   }
+      //   return tmp
+      // }
+      // add(1, 2, 3)(4, 5)(6) //输出21
+
+      var fn = function(a, b, c) {
+        console.log(a + b + c)
+      }
+      function curryIt(fn) {
+        var args = [].slice.call(arguments, 1)
+        if (args.length < fn.length) {
+          return function(arg) {
+            return curryIt.apply(this, [fn].concat(args, arg)) //递归调用传递所有参数
+          }
+        } else {
+          fn.apply(fn, args)
+        }
+      }
+      var curriedarr = curryIt(fn)
+      curriedarr(1)(2)(3)
+    </script>
+  </body>
+</html>

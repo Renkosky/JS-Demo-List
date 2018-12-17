@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>layout_box</title>
+  <style>
+    #left_self,
+    #right_self,
+    #right,
+    #left {
+      width: 200px;
+      height: 200px;
+      background-color: #ffe6b8
+    }
+
+    #left_self {
+      float: left;
+    }
+
+    #right_self {
+      float: right;
+    }
+
+    #center_self {
+      margin: 0 210px;
+      height: 200px;
+      background-color: #a0b3d6
+    }
+
+    #a {
+      display: flex
+    }
+
+    #right {
+      flex: 0 0 200px
+    }
+
+    #left {
+      flex: 0 0 200px
+    }
+
+    #center {
+      flex: 1 1 auto;
+      background-color: #a0b3d6
+    }
+
+    #as {
+      height: 100px;
+      background-color: #a0b3d6
+    }
+
+    #bs {
+      width: 100px;
+      background-color: #e48599
+    }
+
+    body {
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <h3>使用自身浮动法定位</h3>
+  <div id="left_self">我是左边</div>
+  <div id="right_self">我是右边</div>
+  <div id="center_self">我是中间</div>
+  <div id="a">
+    <div id="left">我是左边</div>
+    <div id="center">我是中间</div>
+    <div id="right">我是右边</div>
+
+  </div> -->
+  <div id='as'></div>
+  <div id='bs'></div>
+</body>
+
+</html>

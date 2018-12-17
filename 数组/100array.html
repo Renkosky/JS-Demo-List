@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //不使用loop循环，创建一个长度为100的数组，并且每个元素的值等于它的下标。
+      var arr = new Array(100)
+        .join(',')
+        .split(',')
+        .map(function(item, index) {
+          return index
+        })
+    </script>
+  </body>
+</html>
