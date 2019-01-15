@@ -1,42 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-
-<body>
-  <script>
-    //柯里化（Currying），又称部分求值（Partial Evaluation），是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。
-    var currying = function (fn) {
-      var args = [];
-      return function () {
-        if (arguments.length === 0) {
-          return fn.apply(this, args);
-        } else {
-          [].push.apply(args, arguments);
-          return arguments.callee;
+  <body>
+    <script>
+      //柯里化（Currying），又称部分求值（Partial Evaluation），是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。
+      var currying = function(fn) {
+        var args = []
+        return function() {
+          if (arguments.length === 0) {
+            return fn.apply(this, args)
+          } else {
+            ;[].push.apply(args, arguments)
+            return arguments.callee
+          }
         }
       }
-    };
-    var cost = (function () {
-      var money = 0;
-      return function () {
-        for (var i = 0, l = arguments.length; i < l; i++) {
-          money += arguments[i];
+      var cost = (function() {
+        var money = 0
+        return function() {
+          for (var i = 0, l = arguments.length; i < l; i++) {
+            money += arguments[i]
+          }
+          return money
         }
-        return money;
-      }
-    })();
-    var cost = currying(cost); // 转化成 currying 函数
-    cost(100); // 未真正求值
-    cost(200); // 未真正求值
-    cost(300); // 未真正求值
-    alert(cost()); // 求值并输出： 600
-  </script>
-</body>
-
+      })()
+      var cost = currying(cost) // 转化成 currying 函数
+      cost(100) // 未真正求值
+      cost(200) // 未真正求值
+      cost(300) // 未真正求值
+      alert(cost()) // 求值并输出： 600
+    </script>
+  </body>
 </html>

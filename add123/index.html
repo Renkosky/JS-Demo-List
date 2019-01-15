@@ -57,8 +57,16 @@
           fn.apply(fn, args)
         }
       }
-      var curriedarr = curryIt(fn)
-      curriedarr(1)(2)(3)
+      const curry = fn => {
+        if (fn.length <= 1) return fn
+        const generator = args =>
+          args.length === fn.length
+            ? fn(...args)
+            : arg => generator([...args, arg])
+        return generator([], fn.length)
+      }
+      var curriedarr = curry(fn)
+      console.log(curriedarr(1)(2)(3))
     </script>
   </body>
 </html>
