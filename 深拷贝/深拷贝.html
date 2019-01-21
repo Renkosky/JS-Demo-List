@@ -1,36 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-
-<body>
-  <script>
-    function deepCopy(obj) {
-      var cloneobj = Array.isArray(obj) ? [] : {};
-      if (obj && typeof obj === 'object') {
-        for (var key in obj) {
-          if (obj.hasOwnProperty(key)) {
-            if (typeof obj[key] === 'object') {
-              cloneobj[key] = deepCopy(obj[key]);
-            } else {
-              cloneobj[key] = obj[key]
+  <body>
+    <script>
+      function deepCopy(obj) {
+        var cloneobj = Array.isArray(obj) ? [] : {}
+        if (obj && typeof obj === 'object') {
+          for (var key in obj) {
+            if (obj.hasOwnProperty(key)) {
+              if (
+                Object.prototype.toString.call(obj[key]) === '[object Object]'
+              ) {
+                cloneobj[key] = deepCopy(obj[key])
+              } else {
+                cloneobj[key] = obj[key]
+              }
             }
           }
         }
+        return cloneobj
       }
-      return cloneobj;
-    }
-    a = [1, 2, 3, 4, 5];
-    c = { a: 1, b: 2, c: { d: 11, e: 22 } }
-    b = deepCopy(c)
-    console.log(b);
+      // a = [1, 2, 3, 4, 5]
+      // c = { a: 1, b: 2, c: { d: 11, e: 22 } }
+      // b = deepCopy(c)
+      var a = {
+        name: 'renko',
+        book: {
+          title: 'JS',
+          price: '45'
+        },
+        a1: undefined,
+        a2: null,
+        a3: 123,
+        fn: function() {
+          console.log(this.name)
+        }
+      }
+      var b = deepCopy(a)
 
-  </script>
-</body>
+      a.name = 'books'
+      a.book.price = '55'
+      console.log('B：')
+      console.log(b.fn())
 
+      console.log('A：')
+      console.log(a)
+      let l = {
+        a: 123,
+        b: () => {
+          console.log(this.a)
+        }
+      }
+      l.b()
+    </script>
+  </body>
 </html>

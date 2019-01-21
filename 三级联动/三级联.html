@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+
+
+<html>
+
+
+
+<head>
+
+
+
+  <meta charset="utf-8">
+
+
+
+  <title>题目</title>
+
+
+
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+
+
+
+  <script>
+    var data = [{
+      "name": "北京",
+      "items": [{
+        "name": "北京",
+        "items": [{
+          "name": "东城区"
+        },
+        {
+          "name": "西城区"
+        }
+        ]
+      }]
+    }, {
+      "name": "浙江",
+      "items": [{
+        "name": "杭州",
+        "items": [{
+          "name": "上城区"
+        },
+        {
+          "name": "桐庐县"
+        }
+        ]
+      },
+      {
+        "name": "宁波",
+        "items": [{
+          "name": "象山县"
+        }]
+      }
+      ]
+    }]
+
+    window.onload = function () {
+      var div = document.createElement('div');
+
+      var option = "";
+
+      var val = "";
+
+      var select1 = document.createElement("select");
+
+      var select2 = document.createElement("select");
+
+      var select3 = document.createElement("select")
+
+
+      select1.setAttribute("id", "select1");
+
+      select2.setAttribute("id", "select2")
+
+
+      select3.setAttribute("id", "select3");
+
+      select1.innerHTML = "<option> --请选择-- </option>";
+
+      select2.innerHTML = "<option> --请选择-- </option>";
+
+      select3.innerHTML = "<option> --请选择-- </option>";
+
+      div.appendChild(select1);
+
+      div.appendChild(select2);
+
+      div.appendChild(select3);
+
+
+      for (var i = 0; i < data.length; i++) {
+        option = document.createElement('option');
+        option.setAttribute("value", data[i].name);
+        option.innerHTML = data[i].name;
+        select1.appendChild(option);
+      }
+      document.body.appendChild(div);
+      select1.addEventListener('change', changeSelect1);
+      select2.addEventListener('change', changeSelect2);
+      function changeSelect1(e) {
+        select2.options.length = 1;
+        select3.options.length = 1;
+        val = e.target.value;
+
+        for (var i = 0; i < data.length; i++) {
+
+          if (data[i].name === val) {
+
+            for (var j = 0; j < data[i].items.length; j++) {
+
+              option = document.createElement('option');
+
+              option.setAttribute("value", data[i].items[j].name);
+              option.innerHTML = data[i].items[j].name;
+
+              select2.appendChild(option);
+
+            }
+
+
+            break;
+
+          }
+        }
+
+      }
+
+
+      function changeSelect2(e) {
+        select3.options.length = 1;
+        var val2 = e.target.value;
+        for (var i = 0; i < data.length; i++) {
+          if (data[i].name === val) {
+            for (var j = 0; j < data[i].items.length; j++) {
+              if (data[i].items[j].name === val2) {
+                for (var z = 0; z < data[i].items[j].items.length; z++) {
+                  option = document.createElement('option')
+                  option.setAttribute("value", data[i].items[j].items[z].name); option.innerHTML = data[i].items[j].items[z].name;
+                  select3.appendChild(option);
+                }
+                break;
+              }
+            }
+            break;
+          }
+        }
+
+      }
+
+    }
+
+  </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
